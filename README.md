@@ -1,2 +1,5 @@
-# dex-tool-contracts
-The tool contracts of decentralized exchange.
+# contract-console
+The console to help interacting with contract.
+
+## Quick Start
+`npm run console`

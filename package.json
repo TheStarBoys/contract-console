@@ -1,0 +1,29 @@
+{
+  "name": "contract-console",
+  "version": "0.0.1",
+  "description": "The console to help analyzing contracts.",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "truffle test",
+    "clean": "rm -rf ./build/",
+    "console": "truffle console",
+    "export:artifacts": "npm run clean && truffle compile && cp ./build/contracts/*.json ./artifacts",
+    "deploy:development": "npm run clean && truffle compile && truffle migrate && npm run export:artifacts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheStarBoys/contract-console.git"
+  },
+  "keywords": [
+    "contract"
+  ],
+  "author": "TheStarBoys",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/TheStarBoys/contract-console/issues"
+  },
+  "homepage": "https://github.com/TheStarBoys/contract-console#readme"
+}
