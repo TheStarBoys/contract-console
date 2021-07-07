@@ -48,7 +48,7 @@ module.exports = {
     },
     // mainnet the ethereum mainnet
     mainnet: {
-      provider: () => setupWallet(`https://mainnet.infura.io/v3/${projectId}`),
+      provider: () => new HDWalletProvider(mnemonic, `https://mainnet.infura.io/v3/${projectId}`),
       network_id: 0x1,
       gas: 2 * 1000000,
       gasPrice: utils.toWei('105', 'gwei')
@@ -61,7 +61,7 @@ module.exports = {
       gasPrice: 1000000000,  // 1 gwei (in wei) (default: 100 gwei)
     },
     rinkeby: {
-      provider: () => setupWallet(`https://rinkeby.infura.io/v3/${process.env.INFURA_TOKEN}`),
+      provider: () => new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${projectId}`),
       network_id: 0x4,
       gas: 7 * 1000000,
       gasPrice: utils.toWei('8', 'gwei')
