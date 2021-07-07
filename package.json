@@ -10,6 +10,12 @@
     "test": "truffle test",
     "clean": "rm -rf ./build/",
     "console": "truffle console",
+    "console:mainnet": "truffle console --network mainnet",
+    "console:ropsten": "truffle console --network ropsten",
+    "console:rinkeby": "truffle console --network rinkeby",
+    "console:hecotestnet": "truffle console --network hecotestnet",
+    "console:heco": "truffle console --network heco",
+    "console:bsc": "truffle console --network bsc",
     "export:artifacts": "npm run clean && truffle compile && cp ./build/contracts/*.json ./artifacts",
     "deploy:development": "npm run clean && truffle compile && truffle migrate && npm run export:artifacts"
   },

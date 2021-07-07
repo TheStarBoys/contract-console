@@ -18,11 +18,10 @@
  *
  */
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
-// const infuraKey = "fj4jll3k.....";
-//
-// const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+
+const utils = require('web3-utils')
+const { mnemonic, projectId } = require('./file/secrets.json')
 
 module.exports = {
   /**
@@ -46,6 +45,47 @@ module.exports = {
      host: "127.0.0.1",     // Localhost (default: none)
      port: 8545,            // Standard Ethereum port (default: none)
      network_id: "*",       // Any network (default: none)
+    },
+    // mainnet the ethereum mainnet
+    mainnet: {
+      provider: () => setupWallet(`https://mainnet.infura.io/v3/${projectId}`),
+      network_id: 0x1,
+      gas: 2 * 1000000,
+      gasPrice: utils.toWei('105', 'gwei')
+    },
+    ropsten: {
+      provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${projectId}`),
+      network_id: 3,       // Ropsten's id
+      confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      gasPrice: 1000000000,  // 1 gwei (in wei) (default: 100 gwei)
+    },
+    rinkeby: {
+      provider: () => setupWallet(`https://rinkeby.infura.io/v3/${process.env.INFURA_TOKEN}`),
+      network_id: 0x4,
+      gas: 7 * 1000000,
+      gasPrice: utils.toWei('8', 'gwei')
+    },
+    hecotestnet: {
+      provider: () => new HDWalletProvider(mnemonic, `https://http-testnet.hecochain.com`),
+      network_id: 256,       // heco testnet chain id
+      confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      gasPrice: 1000000000,  // 1 gwei (in wei) (default: 100 gwei)
+    },
+    heco: {
+      provider: () => new HDWalletProvider(mnemonic, `https://http-mainnet-node.huobichain.com`),
+      network_id: 128,       // heco testnet chain id
+      confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      gasPrice: 1000000000,  // 1 gwei (in wei) (default: 100 gwei)
+    },
+    bsc: {
+      provider: () => new HDWalletProvider(mnemonic, 'https://bsc-dataseed.binance.org/'),
+      network_id: 0x38, // 4
+      gas: 6666666,
+      networkCheckTimeout: 400000000,
+      gasPrice: 1000000000
     },
     // Another network with more advanced options...
     // advanced: {

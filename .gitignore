@@ -4,5 +4,13 @@ node_modules
 # truffle build directory
 build/
 
+# extra data file
+/file/
+
 # macOS
 .DS_Store
+
+#Buidler files
+cache
+coverage
+coverage.json
